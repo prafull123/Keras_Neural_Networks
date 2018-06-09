@@ -11,6 +11,7 @@ from keras.utils import np_utils
 # TEST AND TRAIN DATA SPLIT
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
+
 # Visualising the Data 
 plt.subplot(221)
 # First image 
@@ -33,6 +34,8 @@ X_train = X_train.reshape(X_train.shape[0], num_pixels).astype('float32')
 X_test = X_test.reshape(X_test.shape[0], num_pixels).astype('float32')
 
 
+
+
 # normalize inputs from 0-255 to 0-1 (BINARSING THE DATA)
 X_train = X_train / 255
 X_test = X_test / 255
@@ -52,6 +55,7 @@ def Dense_NN_Model():
 	# create model
 	model = Sequential()
 	model.add(Dense(num_pixels, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
+	model.add(Dense(num_pixels, input_dim=num_pixels, activation='relu'))
 	model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -66,7 +70,7 @@ model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_s
 # Final evaluation of the model
 
 scores = model.evaluate(X_test, y_test, verbose=0)
-print("Dense NN Error: %.2f%%" % (100-scores[1]*100))
+print("Dense NN Error:"+ str((100-scores[1]*100))[:4]+" %")
 
 
 Predicted_Output = model.predict(X_test)
