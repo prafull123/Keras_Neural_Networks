@@ -1,5 +1,5 @@
 # Artificial Neural Network application in Bank churn modelling
-# Libraries used and there installation - 
+# Libraries used and their installation - 
 # Installing Theano
 # pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
 # Installing Tensorflow
